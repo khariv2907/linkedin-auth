@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7759431e303e2d722a264a8a991a9e84",
+    "content-hash": "5c047d122d38e979c851e866cdd15a8d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1343,6 +1343,65 @@
                 }
             ],
             "time": "2021-01-18T20:58:21+00:00"
+        },
+        {
+            "name": "lucidarch/lucid",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lucidarch/lucid.git",
+                "reference": "4a51a0719afe31e946b2619439e9f2cd3934a2b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lucidarch/lucid/zipball/4a51a0719afe31e946b2619439e9f2cd3934a2b0",
+                "reference": "4a51a0719afe31e946b2619439e9f2cd3934a2b0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "symfony/console": "*",
+                "symfony/filesystem": "*",
+                "symfony/finder": "*",
+                "symfony/process": "*"
+            },
+            "bin": [
+                "lucid"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lucid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abed Halawi",
+                    "email": "halawi.abed@gmail.com"
+                }
+            ],
+            "description": "An architecture for scalable software.",
+            "homepage": "https://lucidarch.dev",
+            "keywords": [
+                "architecture",
+                "laravel",
+                "lucid"
+            ],
+            "support": {
+                "issues": "https://github.com/lucidarch/lucid/issues",
+                "source": "https://github.com/lucidarch/lucid"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/mulkave",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2021-05-10T12:38:08+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2852,6 +2911,68 @@
                 }
             ],
             "time": "2021-03-23T23:28:01+00:00"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "v5.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "348116319d7fb7d1faa781d26a48922428013eb2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/348116319d7fb7d1faa781d26a48922428013eb2",
+                "reference": "348116319d7fb7d1faa781d26a48922428013eb2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-ctype": "~1.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides basic utilities for the filesystem",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/filesystem/tree/v5.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-05-26T17:43:10+00:00"
         },
         {
             "name": "symfony/finder",
@@ -7341,5 +7462,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
