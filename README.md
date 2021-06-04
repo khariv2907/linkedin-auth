@@ -1,5 +1,5 @@
 # LinkedIn OAuth
-#Links
+## Links
  -  [Introduction](#Introduction)
  -  [Architecture](#Architecture)
  -  [Project Set Up](#Project-Set-Up)
