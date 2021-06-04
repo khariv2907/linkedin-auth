@@ -5,15 +5,15 @@ namespace App\Http\Controllers;
 use App\Features\HomeFeature;
 use Lucid\Units\Controller;
 
-class HomeController extends Controller
+class UserController extends Controller
 {
     /**
-     * Home Page
+     * Users List
      *
      * @return mixed
      */
     public function index(): mixed
     {
-        return $this->serve(HomeFeature::class);
+        return $this->serve(UsersListFeature::class);
     }
 }
