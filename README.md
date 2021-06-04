@@ -27,7 +27,7 @@ The Lucid Architecture is a software architecture that consolidates code-base ma
 
 
 We use Lucid Micro.
-> You can read more about Lucid at the link: [Lucid Docs - Micro](https://docs.lucidarch.dev/micro-vs-monolith/#micro)
+> You can read more about Lucid Micro at the link: [Lucid Docs - Micro](https://docs.lucidarch.dev/micro-vs-monolith/#micro)
 
 #### Laravel Sail
 Laravel Sail is a light-weight command-line interface for interacting with Laravel's default Docker development environment. Sail provides a great starting point for building a Laravel application.
