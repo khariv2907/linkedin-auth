@@ -1,14 +1,17 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Features\User;
 
-use Tests\TestCase;
-use App\Features\User/UsersListFeature;
+use Tests\TestCases\UserTestCase;
 
-class User/UsersListFeatureTest extends TestCase
+class UsersListFeatureTest extends UserTestCase
 {
-    public function test_user/_users_list_feature()
+    public function testUsersListFeature()
     {
-        $this->markTestIncomplete();
+        $response = $this->get(route(self::USERS_ROUTE));
+
+        $response->assertOk();
+        $response->assertViewIs('users.index');
+        $response->assertViewHas(['users', 'pageTitle']);
     }
 }

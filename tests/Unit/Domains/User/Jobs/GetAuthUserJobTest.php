@@ -1,14 +1,25 @@
 <?php
 
-namespace Tests\Unit\Domains\USer\Jobs;
+namespace Tests\Unit\Domains\User\Jobs;
 
-use Tests\TestCase;
+use App\Data\Models\User;
 use App\Domains\USer\Jobs\GetAuthUserJob;
+use Tests\TestCases\TestCase;
 
 class GetAuthUserJobTest extends TestCase
 {
-    public function test_get_auth_user_job()
+    public function testGetAuthUserJob()
     {
-        $this->markTestIncomplete();
+        /** @var User $user */
+        $user = User::factory()->create([
+            'id' => 1
+        ]);
+
+        $this->actingAs($user);
+
+        /** @var User $authUser */
+        $authUser = $this->dispatchSync(new GetAuthUserJob());
+
+        $this->assertEquals($user->id, $authUser->id);
     }
 }

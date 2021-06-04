@@ -2,13 +2,17 @@
 
 namespace Tests\Unit\Domains\Auth\Jobs;
 
-use Tests\TestCase;
+use App\Data\Models\User;
 use App\Domains\Auth\Jobs\LoginUserJob;
+use Tests\TestCases\TestCase;
 
 class LoginUserJobTest extends TestCase
 {
-    public function test_login_user_job()
+    public function testLoginUserJob()
     {
-        $this->markTestIncomplete();
+        $user = User::factory()->create();
+        $this->dispatchSync(new LoginUserJob($user));
+
+        $this->assertAuthenticated();
     }
 }

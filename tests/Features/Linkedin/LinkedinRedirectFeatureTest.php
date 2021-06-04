@@ -1,14 +1,15 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Features\Linkedin;
 
-use Tests\TestCase;
-use App\Features\Linkedin/LinkedinRedirectFeature;
+use Tests\TestCases\LinkedinTestCase;
 
-class Linkedin/LinkedinRedirectFeatureTest extends TestCase
+class LinkedinRedirectFeatureTest extends LinkedinTestCase
 {
-    public function test_linkedin/_linkedin_redirect_feature()
+    public function testLinkedinRedirectFeature()
     {
-        $this->markTestIncomplete();
+        $response = $this->get(route(self::REDIRECT_ROUTE));
+
+        $response->assertRedirect();
     }
 }

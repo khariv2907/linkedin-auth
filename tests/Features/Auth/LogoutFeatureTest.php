@@ -1,14 +1,21 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Features\Auth;
 
-use Tests\TestCase;
-use App\Features\Auth/LogoutFeature;
+use App\Data\Models\User;
+use Tests\TestCases\AuthTestCase;
 
-class Auth/LogoutFeatureTest extends TestCase
+class LogoutFeatureTest extends AuthTestCase
 {
-    public function test_auth/_logout_feature()
+    public function testLogoutFeature()
     {
-        $this->markTestIncomplete();
+        $user = User::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->get(route(self::LOGOUT_ROUTE));
+
+        $response->assertRedirect(route(self::HOME_ROUTE));
+        $this->assertGuest();
     }
 }

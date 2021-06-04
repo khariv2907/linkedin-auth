@@ -10,6 +10,7 @@ use App\Domains\User\Jobs\GetUserByOAuthIdJob;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Arr;
 use Lucid\Units\Feature;
 
 class LinkedinCallbackFeature extends Feature
@@ -19,8 +20,17 @@ class LinkedinCallbackFeature extends Feature
      */
     public function handle(): Redirector|Application|RedirectResponse
     {
-        $linkedinUser = $this->run(new GetSocialiteUserJob(SocialiteProvider::Linkedin()));
-        $user = $this->run(new GetUserByOAuthIdJob($linkedinUser->id));
+        $linkedinUser = $this->run(new GetSocialiteUserJob());
+
+        if (! $linkedinUser) {
+            return redirect()
+                ->route('home')
+                ->withErrors(['Can\'t get LinkedIn user.']);
+        }
+
+        $oAuthId = Arr::get($linkedinUser, 'id');
+
+        $user = $this->run(new GetUserByOAuthIdJob($oAuthId));
 
         if (! $user) {
             $user = $this->run(new CreateUserWithSocialiteJob($linkedinUser, SocialiteProvider::Linkedin()));

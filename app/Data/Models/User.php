@@ -2,11 +2,23 @@
 
 namespace App\Data\Models;
 
+use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * Class User
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string $oauth_id
+ * @property string $oauth_type
+ * @package App\Data\Models
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -42,4 +54,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
+    protected static function newFactory(): Factory
+    {
+        return UserFactory::new();
+    }
 }

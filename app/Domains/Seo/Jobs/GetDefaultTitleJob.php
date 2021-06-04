@@ -2,6 +2,7 @@
 
 namespace App\Domains\Seo\Jobs;
 
+use Illuminate\Support\Facades\Config;
 use Lucid\Units\Job;
 
 class GetDefaultTitleJob extends Job
@@ -21,6 +22,6 @@ class GetDefaultTitleJob extends Job
      */
     public function handle(): string
     {
-        return $this->title . ' - ' . config('app.name');
+        return $this->title . ' - ' . Config::get('app.name');
     }
 }

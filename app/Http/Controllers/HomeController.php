@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Features\HomeFeature;
+use App\Features\Home\HomeFeature;
 use Lucid\Units\Controller;
 
 class HomeController extends Controller

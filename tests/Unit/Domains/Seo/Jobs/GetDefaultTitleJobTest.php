@@ -2,13 +2,20 @@
 
 namespace Tests\Unit\Domains\Seo\Jobs;
 
-use Tests\TestCase;
+use App\Data\Models\User;
+use App\Domains\Auth\Jobs\LoginUserJob;
 use App\Domains\Seo\Jobs\GetDefaultTitleJob;
+use Illuminate\Support\Facades\Config;
+use Tests\TestCases\TestCase;
 
 class GetDefaultTitleJobTest extends TestCase
 {
-    public function test_get_default_title_job()
+    public function testGetDefaultTitleJob()
     {
-        $this->markTestIncomplete();
+       Config::set('app.name', 'LinkedIn OAuth');
+
+       $actualTitle = $this->dispatchSync(new GetDefaultTitleJob('Test'));
+
+       $this->assertEquals('Test - LinkedIn OAuth', $actualTitle);
     }
 }

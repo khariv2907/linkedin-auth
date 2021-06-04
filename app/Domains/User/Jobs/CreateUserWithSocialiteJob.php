@@ -15,7 +15,7 @@ class CreateUserWithSocialiteJob extends Job
      * @return void
      */
     public function __construct(
-        private SocialiteUser $user,
+        private array $user,
         private SocialiteProvider $provider
     ) { }
 
@@ -27,9 +27,9 @@ class CreateUserWithSocialiteJob extends Job
     public function handle(): ?User
     {
         $user = User::create([
-            'name' => $this->user->name,
-            'email' => $this->user->email,
-            'oauth_id' => $this->user->id,
+            'name' => $this->user['name'],
+            'email' => $this->user['email'],
+            'oauth_id' => $this->user['id'],
             'oauth_type' => $this->provider->value,
             'password' => encrypt('secret')
         ]);

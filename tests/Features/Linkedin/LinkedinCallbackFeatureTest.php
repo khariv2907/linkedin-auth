@@ -1,14 +1,38 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Features\Linkedin;
 
-use Tests\TestCase;
-use App\Features\Linkedin/LinkedinCallbackFeature;
+use App\Data\Enums\SocialiteProvider;
+use App\Data\ThirdPartyServices\LinkedinService;
+use Illuminate\Support\Str;
+use Laravel\Socialite\Facades\Socialite;
+use Mockery;
+use Tests\TestCases\LinkedinTestCase;
 
-class Linkedin/LinkedinCallbackFeatureTest extends TestCase
+class LinkedinCallbackFeatureTest extends LinkedinTestCase
 {
-    public function test_linkedin/_linkedin_callback_feature()
+    public function testLinkedinCallbackFeature()
     {
-        $this->markTestIncomplete();
+        // mock LinkedIn user info
+        $this->partialMock(LinkedinService::class, function ( $mock) {
+           $mock->shouldReceive('getUserInfoAsArray')->andReturn([
+               'id' => '123',
+               'name' => 'Test Name',
+               'email' => 'example@gmail.com',
+           ]);
+        });
+
+        $response = $this->get(route(self::CALLBACK_ROUTE));
+
+        $response->assertRedirect();
+        $response->assertSessionDoesntHaveErrors();
+        $this->assertAuthenticated();
+
+        $this->assertDatabaseHas('users', [
+            'name' => 'Test Name',
+            'email' => 'example@gmail.com',
+            'oauth_id' => '123',
+            'oauth_type' => SocialiteProvider::Linkedin
+        ]);
     }
 }

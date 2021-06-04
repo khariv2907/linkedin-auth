@@ -2,29 +2,19 @@
 
 namespace App\Domains\Socialite\Jobs;
 
-use App\Data\Enums\SocialiteProvider;
-use Laravel\Socialite\Contracts\User as SocialiteUser;
-use Laravel\Socialite\Facades\Socialite;
+use App\Data\ThirdPartyServices\LinkedinService;
 use Lucid\Units\Job;
 
 class GetSocialiteUserJob extends Job
 {
     /**
-     * Create a new job instance.
-     *
-     * @return void
-     */
-    public function __construct(
-        private SocialiteProvider $provider
-    ) {}
-
-    /**
      * Execute the job.
      *
-     * @return SocialiteUser
+     * @param LinkedinService $socialite
+     * @return array
      */
-    public function handle(): SocialiteUser
+    public function handle(LinkedinService $socialite): array
     {
-        return Socialite::driver($this->provider->value)->user();
+        return $socialite->getUserInfoAsArray();
     }
 }

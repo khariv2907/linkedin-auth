@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Features;
+namespace App\Features\Home;
 
 use App\Domains\Http\Jobs\RespondWithViewJob;
 use App\Domains\Seo\Jobs\GetDefaultTitleJob;
