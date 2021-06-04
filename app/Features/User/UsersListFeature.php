@@ -1,14 +1,26 @@
 <?php
 
-namespace App\Features;
+namespace App\Features\User;
 
-use Illuminate\Http\Request;
+use App\Domains\Http\Jobs\RespondWithViewJob;
+use App\Domains\Seo\Jobs\GetDefaultTitleJob;
+use App\Domains\User\Jobs\GetUsersListJob;
+use Illuminate\Http\Response;
 use Lucid\Units\Feature;
 
-class User/UsersListFeature extends Feature
+class UsersListFeature extends Feature
 {
-    public function handle(Request $request)
+    /**
+     * @return Response
+     */
+    public function handle(): Response
     {
+        $users = $this->run(new GetUsersListJob);
+        $pageTitle = $this->run(new GetDefaultTitleJob('Users'));
 
+        return $this->run(new RespondWithViewJob('users.index', [
+            'users' => $users,
+            'pageTitle' => $pageTitle,
+        ]));
     }
 }

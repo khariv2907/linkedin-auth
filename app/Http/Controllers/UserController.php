@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Features\HomeFeature;
+use App\Features\User\UsersListFeature;
 use Lucid\Units\Controller;
 
 class UserController extends Controller
