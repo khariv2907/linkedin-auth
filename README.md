@@ -64,17 +64,12 @@ git clone https://github.com/khariv2907/linkedin-auth.git
 cd linkedin-auth
 ```
 
-#### Step 3. Add Permission
-```bash
-sudo chown -R $USER: .
-```
-
-#### Step 4. Copy .env
+#### Step 3. Copy .env
 ```bash
 cp .env.example .env
 ```
 
-#### Step 5. Install Composer packages
+#### Step 4. Install Composer packages
 ```bash
 docker run --rm \
     -u "$(id -u):$(id -g)" \
@@ -84,32 +79,32 @@ docker run --rm \
     composer install --ignore-platform-reqs
 ```
 
-#### Step 6. Create alias for the Sail
+#### Step 5. Create alias for the Sail
 Add alias for the current session
 ```bash
 alias sail='bash vendor/bin/sail'
 ```
 
-#### Step 7. Build and Start Docker Containers
+#### Step 6. Build and Start Docker Containers
 ```bash
 sail build
 sail up -d
 ```
 
-#### Step 8. Install node modules and build assets
+#### Step 7. Install node modules and build assets
 ```bash
 sail npm install
 sail npm run prod
 ```
 
-#### Step 9. Generate key and run migrations
+#### Step 8. Generate key and run migrations
 ```bash
 sail shell
 php artisan key:generate
 php artisan migrate
 ```
 
-#### Step 10. Done
+#### Step 9. Done
 You can now go to [http://localhost](http://localhost)
 
 ## Run Tests
